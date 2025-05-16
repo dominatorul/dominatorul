@@ -16,7 +16,7 @@ class Attributes(Dominatorul):
     @property
     def life(self) -> Tuple[List[str], int]:
         hobbies = ['Gaming', 'Coding', 'Exploring the digital realm and Music']
-        age = 20
+        age = 21
         return f"At the ripe age of {age}, my life revolves around: {', '.join(hobbies)}."
 
     @property
