@@ -1,39 +1,79 @@
-<h2 align="center">About Me </h2>
-
-```python
 from typing import Tuple, List, Dict
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
+from rich import box
+
+console = Console()
+
 
 class Dominatorul:
+    """💫 The Supreme Class of All Classes 💫"""
     pass
 
+
 class Attributes(Dominatorul):
+    """👑 Dominatorul’s Royal Attributes 👑"""
+
     @property
-    def contact(self) -> Tuple[str, str, str]:
+    def contact(self) -> str:
         discord = "Dominatorul"
-        telegram = "t.me/dominatorul"
+        telegram = "https://t.me/dominatorul"
         kofi = "https://ko-fi.com/dominatorul"
-        return f"Find me on Discord: {discord}, or on Telegram: {telegram}! Buy me a coffee: {kofi}"
+
+        message = (
+            f"[bold cyan]📬 Find me on Discord:[/bold cyan] [white]{discord}[/white]\n"
+            f"[bold magenta]💬 Telegram:[/bold magenta] [white]{telegram}[/white]\n"
+            f"[bold yellow]☕ Buy me a coffee:[/bold yellow] [white]{kofi}[/white]"
+        )
+        return message
 
     @property
-    def life(self) -> Tuple[List[str], int]:
-        hobbies = ['Gaming', 'Coding', 'Exploring the digital realm and Music']
+    def life(self) -> str:
+        hobbies = ['🎮 Gaming', '💻 Coding', '🌐 Exploring the digital realm', '🎶 Music']
         age = 21
-        return f"At the ripe age of {age}, my life revolves around: {', '.join(hobbies)}."
+        message = (
+            f"[bold green]🌟 Age:[/bold green] [white]{age}[/white]\n"
+            f"[bold blue]💫 My life revolves around:[/bold blue] "
+            f"[italic]{', '.join(hobbies)}[/italic]"
+        )
+        return message
 
     @property
-    def coding(self) -> Tuple[Dict[str, List[str]], List[str], List[str]]:
+    def coding(self) -> str:
         skills = {
-            'expert': ['Python'],
-            'intermediate': ['C++', 'JavaScript'],
-            'learning': ['Java']
+            '💎 Expert': ['Python'],
+            '⚙️ Intermediate': ['C++', 'JavaScript'],
+            '🌱 Learning': ['Java']
         }
         expertise = ['Python']
-        tools = ['VSCode and Magic Wand']
-        return f"Behold my coding kingdom! I know {', '.join(expertise)} very well, and my preferred environments are {', '.join(tools)}!"
+        tools = ['🪄 VSCode', '✨ Magic Wand']
+
+        skills_text = "\n".join(
+            [f"[bold]{level}:[/bold] [white]{', '.join(langs)}[/white]" for level, langs in skills.items()]
+        )
+
+        message = (
+            f"[bold cyan]👨‍💻 Skills Breakdown:[/bold cyan]\n{skills_text}\n\n"
+            f"[bold yellow]⚡ Expertise:[/bold yellow] [white]{', '.join(expertise)}[/white]\n"
+            f"[bold green]🧰 Tools of choice:[/bold green] [white]{', '.join(tools)}[/white]"
+        )
+        return message
 
 
-dominatorul_attributes = Attributes()
+def main():
+    dominatorul_attributes = Attributes()
 
-print(dominatorul_attributes.contact)
-print(dominatorul_attributes.life)
-print(dominatorul_attributes.coding)
+    console.print(Panel.fit(
+        Text("🌐 DOMINATORUL PROFILE 🌐", justify="center", style="bold underline magenta"),
+        box=box.DOUBLE,
+        border_style="bright_magenta"
+    ))
+
+    console.print(Panel(dominatorul_attributes.contact, title="📞 CONTACT", border_style="cyan", box=box.ROUNDED))
+    console.print(Panel(dominatorul_attributes.life, title="💖 LIFE", border_style="green", box=box.ROUNDED))
+    console.print(Panel(dominatorul_attributes.coding, title="💻 CODING", border_style="yellow", box=box.ROUNDED))
+
+
+if __name__ == "__main__":
+    main()
