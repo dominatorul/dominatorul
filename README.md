@@ -11,7 +11,7 @@ class Attributes(Dominatorul):
     def contact(self) -> Tuple[str, str, str]:
         discord = "Dominatorul"
         telegram = "t.me/dominatorul"
-        kofi = "https://ko-fi.com/dominatorul
+        kofi = "https://ko-fi.com/dominatorul"
         return f"Find me on Discord: {discord}, or on Telegram: {telegram}! Buy me a coffee: {kofi}"
 
     @property
